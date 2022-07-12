@@ -1,0 +1,102 @@
+#include<iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    int n[6] = {0};
+    int temp = 0, min1 = 0;
+	int guess=0;
+	int i=0;
+	int k=0;
+	int j=0;
+	int a=0, b=0;
+    int c=0;
+    
+    int en[6]={0};
+    int ip=0;
+    int d=0;
+    int g=0;
+	
+    for(d=0;d<6;d++)
+    {  
+        cout<<"請輸入要猜的數字(1到49):";
+	    cout<<endl;
+        cin>>en[d];
+        g=en[d];
+        if(g<1||g>49)
+            {
+                d--;
+                cout<<"請重新輸入，你的數字大於49或小於1"<<endl;
+            }
+        for(int ip=0;ip<d;ip++)
+        {
+           
+            if(g==en[ip])
+            {
+              d--;
+              cout<<"有重複的數字，請重新輸入";
+            }
+            
+    
+    }
+   
+    }
+    cout<<"你要猜的獎號為:"<<endl;
+    for(d=0;d<6;d++)
+    {
+        cout<<en[d]<<" ";
+    }
+
+    srand( time(NULL) );
+	int min2 = 1;
+	int max2 = 49;
+	for(k=0;k<=5;k++)
+	{
+   		n[k] = rand() % (max2 - min2 + 1) + min2;
+		for(j=0;j<k;j++){
+	       if(n[j]==n[k]){
+	         k--;
+	       }
+		}
+	}
+	 
+	cout<<endl<<"排序前獎號:"<<endl;
+    for(k=0;k<6;k++){
+       cout<<n[k]<<" ";
+    }
+       
+    for(k=1;k<5;k++){
+       for(a=0;a<6-k;a++){
+          if(n[a]>n[a+1]){
+              temp=n[a];
+              n[a]=n[a+1];
+              n[a+1]=temp;
+              
+            }
+        }
+    }
+    cout<<endl<<"排序後的獎號"<<endl;
+    for(k=0;k<5;k++){
+       cout<<n[k]<<" ";
+    }
+    cout<<n[5]<<" "<<endl;
+
+	 for(d=0;d<6;d++)
+	 {
+	    g=en[d];
+	    for(k=0;k<6;k++)
+	    {
+            if(n[k]==g)
+           {
+               c=c+1;
+               cout<<g<<endl;
+               cout << "在註標值為" << k << "位置找到"<< endl;
+ 
+               cout<<"中獎號為:"<<g<<" "<<endl;
+            }
+	    }
+    }  
+    cout<<"中獎"<<c<<"個"<<endl;
+}
